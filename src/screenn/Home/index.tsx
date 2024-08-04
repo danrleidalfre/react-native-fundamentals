@@ -1,17 +1,28 @@
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Alert, FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from "./styles";
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import {Participant} from "../../components/Participant";
 
 export default function Home() {
   const participants = ['Danrlei']
 
   function handleAddParticipant() {
-
+    Alert.alert('Novo', 'Adicionando novo')
   }
 
   function handleRemoveParticipant() {
-    console.log('participant remove')
+    Alert.alert('Remover Participante', 'Tem certeza que deseja remover esse participante?', [
+      {
+        text: 'Sim',
+        onPress: () => onDelete()
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
+  }
+
+  function onDelete() {
   }
 
   return (
@@ -28,7 +39,6 @@ export default function Home() {
           <Participant name={item} onRemove={handleRemoveParticipant}/>
         )}
       />
-      <ExpoStatusBar/>
     </View>
   );
 }
