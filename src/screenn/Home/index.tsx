@@ -20,14 +20,17 @@ export default function Home() {
     setName('')
   }
 
-  function handleRemoveParticipant() {
+  function handleRemoveParticipant(name: string) {
     Alert.alert('Remover Participante', 'Tem certeza que deseja remover esse participante?', [
-      {text: 'Sim', onPress: () => onDelete()},
+      {text: 'Sim', onPress: () => onDelete(name)},
       {text: 'Não', style: 'cancel'}
     ])
   }
 
-  function onDelete() {
+  function onDelete(name: string) {
+    setParticipants(
+      participants.filter(participant => participant !== name)
+    )
   }
 
   return (
@@ -50,7 +53,7 @@ export default function Home() {
         data={participants}
         keyExtractor={item => item}
         renderItem={({item}) => (
-          <Participant name={item} onRemove={handleRemoveParticipant}/>
+          <Participant name={item} onRemove={() => handleRemoveParticipant(item)}/>
         )}
       />
     </View>

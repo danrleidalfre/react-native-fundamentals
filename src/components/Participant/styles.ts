@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   remove: {},
   textRemove: {
     color: 'red',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'semibold',
   }
 })
